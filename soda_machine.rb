@@ -20,7 +20,10 @@ class SodaMachine
   # When a soda is sold, it should be removed from the soda machine 
   # and the price of the soda should be added to the soda machine's cash
   def sell(soda_brand)
-
+    if find_soda(soda_brand)
+      @cash += find_soda(soda_brand).price
+      @sodas.delete(find_soda(soda_brand))
+    end
   end
 
 end
