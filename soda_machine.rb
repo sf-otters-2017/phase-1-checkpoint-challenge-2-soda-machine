@@ -7,12 +7,28 @@ class SodaMachine
   end
 
   def current_inventory_count
+    @sodas.length
   end
 
   def find_soda(soda_brand)
+    @sodas.each do |soda|
+      return soda if soda.brand == soda_brand
+    end
+    nil
   end
 
-  def sell(soda_brand)
+  def sell(soda_brand)  
+    # if soda_brand != @sodas
+    #   nil
+    # elsif @sodas.include?(soda_brand)
+    #   @sodas.pop.soda_brand
+    # end
+
+    soda = self.find_soda(soda_brand)
+    return nil if soda.nil?
+    @cash += soda.price
+    @sodas.delete(soda)
+    #
   end
 
 end

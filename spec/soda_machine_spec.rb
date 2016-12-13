@@ -49,6 +49,7 @@ describe SodaMachine do
         expect(soda_machine.sodas).not_to include(coke_zero)
       end
     end
+    #
   end
 
 end
