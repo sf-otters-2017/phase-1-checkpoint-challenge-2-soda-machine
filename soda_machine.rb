@@ -8,7 +8,7 @@ class SodaMachine
 
   # Soda machine will be able to return the number of sodas it contains.
   def current_inventory_count
-
+    @sodas.count
   end
 
   # Soda machine will be able to find a single soda with a given brand.
