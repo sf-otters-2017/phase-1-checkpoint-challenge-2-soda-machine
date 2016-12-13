@@ -1,3 +1,5 @@
+require_relative "soda"
+
 class SodaMachine
   attr_reader :sodas, :cash
 
@@ -7,6 +9,8 @@ class SodaMachine
   end
 
   def current_inventory_count
+   @sodas.length
+
   end
 
   def find_soda(soda_brand)
@@ -16,3 +20,6 @@ class SodaMachine
   end
 
 end
+
+
+soda_machine = SodaMachine.new(sodas: [pepsi, mountain_dew, coke_zero, second_pepsi], cash: 1.00)
