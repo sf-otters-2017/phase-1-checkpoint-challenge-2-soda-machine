@@ -13,7 +13,7 @@ class SodaMachine
 
   # Soda machine will be able to find a single soda with a given brand.
   def find_soda(soda_brand)
-
+    @sodas.find {|soda| soda.brand == soda_brand}
   end
 
   # Soda machine will be able to sell a soda with a given brand. 
