@@ -20,9 +20,13 @@ class SodaMachine
     @sodas.find {|soda_name| soda_name.brand == soda_brand}
   end
 
-#remove from sodas array, and subract price from cash
+#remove from sodas array, and adds price from cash
   def sell(soda_brand)
     @sodas.delete_if {|soda| soda.brand == soda_brand}
+    @cash += 1.00
+    if @sodas.not_include(brand_name)
+      nil
+    end
   end
 end
 #new sodas are created. they each have a brand and a price
