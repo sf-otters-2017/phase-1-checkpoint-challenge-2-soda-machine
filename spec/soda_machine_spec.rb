@@ -28,7 +28,7 @@ describe SodaMachine do
     end
   end
 
-  describe "#sell", { sell: true } do
+  pending "#sell", { sell: true } do
     context "when the soda is not available to be sold" do
       it "returns nil" do
         expect(soda_machine.sell('Surge')).to eq(nil)
