@@ -14,7 +14,7 @@ describe SodaMachine do
       expect(soda_machine.current_inventory_count).to eq(4)
     end
   end
-#-----------
+
   describe "#find_soda", { find_soda: true } do
     context "when the soda is in the machine" do
       it "returns the first instance of the soda brand the user requested" do
@@ -22,34 +22,34 @@ describe SodaMachine do
       end
     end
 
-    # context "when the soda is not available" do
-    #   it "returns nil" do
-    #     expect(soda_machine.find_soda('Surge')).to eq(nil)
-    #   end
-    # end
+    context "when the soda is not available" do
+      it "returns nil" do
+        expect(soda_machine.find_soda('Surge')).to eq(nil)
+      end
+    end
   end
 
-  # describe "#sell", { sell: true } do
-  #   context "when the soda is not available to be sold" do
-  #     it "returns nil" do
-  #       expect(soda_machine.sell('Surge')).to eq(nil)
-  #     end
-  #   end
+  describe "#sell", { sell: true } do
+    context "when the soda is not available to be sold" do
+      it "returns nil" do
+        expect(soda_machine.sell('Surge')).to eq(nil)
+      end
+    end
 
-  #   context "when the soda is available to be sold" do
-  #     before(:each) do
-  #       @sold_soda = soda_machine.sell('Coke Zero')
-  #     end
-  #     it "returns the sold soda" do
-  #       expect(@sold_soda).to be(coke_zero)
-  #     end
-  #     it "adds the price of the soda sold to the cash" do
-  #       expect(soda_machine.cash).to eq(2.00)
-  #     end
-  #     it "removes the sold soda from the machine" do
-  #       expect(soda_machine.sodas).not_to include(coke_zero)
-  #     end
-  #   end
-  # end
+    context "when the soda is available to be sold" do
+      before(:each) do
+        @sold_soda = soda_machine.sell('Coke Zero')
+      end
+      it "returns the sold soda" do
+        expect(@sold_soda).to be(coke_zero)
+      end
+      it "adds the price of the soda sold to the cash" do
+        expect(soda_machine.cash).to eq(2.00)
+      end
+      it "removes the sold soda from the machine" do
+        expect(soda_machine.sodas).not_to include(coke_zero)
+      end
+    end
+  end
 
 end
