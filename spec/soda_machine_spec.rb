@@ -3,10 +3,10 @@ require_relative "../soda"
 require_relative "../soda_machine"
 
 describe SodaMachine do
-  let (:pepsi) { Soda.new(brand: 'Pepsi', price: 0.65) }
-  let (:mountain_dew) { Soda.new(brand: 'Mountain Dew', price: 0.75) }
-  let (:coke_zero) { Soda.new(brand: 'Coke Zero', price: 1.00) }
-  let (:second_pepsi) { Soda.new(brand: 'Pepsi', price: 0.65) }
+  let (:pepsi) { Soda.new(brand: 'Pepsi', price: '$0.65') }
+  let (:mountain_dew) { Soda.new(brand: 'Mountain Dew', price: '$0.75') }
+  let (:coke_zero) { Soda.new(brand: 'Coke Zero', price: '$1.00') }
+  let (:second_pepsi) { Soda.new(brand: 'Pepsi_second', price: '$0.65') }
 
   let(:soda_machine) { SodaMachine.new(sodas: [pepsi, mountain_dew, coke_zero, second_pepsi], cash: 1.00) }
 
@@ -22,7 +22,7 @@ describe SodaMachine do
         expect(soda_machine.find_soda('Mountain Dew')).to eq(mountain_dew)
       end
     end
-
+  
     context "when the soda is not available" do
       it "returns nil" do
         expect(soda_machine.find_soda('Surge')).to eq(nil)
@@ -41,6 +41,7 @@ describe SodaMachine do
       before(:each) do
         @sold_soda = soda_machine.sell('Coke Zero')
       end
+
       it "returns the sold soda" do
         expect(@sold_soda).to be(coke_zero)
       end
@@ -53,4 +54,23 @@ describe SodaMachine do
     end
   end
 
+  describe "#find_cheapest_soda", { current_inventory_count: true } do
+    it "returns the cheapest soda item in the inventory" do
+      expect(soda_machine.find_cheapest_soda).to eq([second_pepsi, pepsi])
+    end
+
+    context "Sell some soda and find cheapers" do
+      before(:each) do 
+        soda_machine.sell('Mountain Dew')
+        soda_machine.sell('Coke Zero')
+      end
+
+      it "Find the cheapest soda after selling some items" do 
+        expect(soda_machine.find_cheapest_soda).to eq([ second_pepsi, pepsi])
+      end
+    end
+  end
 end
+
+
+
