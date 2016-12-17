@@ -17,10 +17,9 @@ class SodaMachine
     if find_soda(soda_brand)
       soda=find_soda(soda_brand)
       @cash+=soda.price
-      sold_soda=soda
       @sodas.delete(soda)
+      soda
     end
-    sold_soda
   end
 
 end
