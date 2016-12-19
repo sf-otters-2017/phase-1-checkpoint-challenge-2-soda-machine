@@ -6,6 +6,7 @@ class SodaMachine
   def initialize(args = {})
     @sodas = args[:sodas]
     @cash = args[:cash]
+    @sold_soda = []
   end
 
   def current_inventory_count
@@ -14,23 +15,16 @@ class SodaMachine
 
 #mountain dew is the name of a soda instance. its also the name of the soda brand
   def find_soda(soda_brand)
-    @sodas.find do |soda| 
-      if soda.brand == soda_brand
-        soda
-      else
-        nil
-      end
-    end
+    @sodas.find {|soda| soda.brand == soda_brand}
   end
 
 #should equal the name of the instance variable of the brand thats called
 #need to find the instance var name of its brand
   def sell(soda_brand)
-    if find_soda(soda_brand)
-      @cash += find_soda(soda_brand).price
-      @sodas.delete(find_soda(soda_brand))
-    else
-      nil
+    @sold_soda = find_soda(soda_brand)
+    unless @sold_soda == nil
+      @cash += @sold_soda.price
+      @sodas.delete(@sold_soda)
     end
   end
 
