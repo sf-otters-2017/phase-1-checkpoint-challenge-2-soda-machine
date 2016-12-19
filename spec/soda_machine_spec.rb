@@ -34,6 +34,7 @@ describe SodaMachine do
         expect(soda_machine.sell('Surge')).to eq(nil)
       end
     end
+  end
 
     context "when the soda is available to be sold" do
       before(:each) do
@@ -51,4 +52,4 @@ describe SodaMachine do
     end
   end
 
-end
+# end
