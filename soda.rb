@@ -1,4 +1,4 @@
-class Soda
+class Soda 
   attr_reader :brand, :price
 
   def initialize(info = {})
